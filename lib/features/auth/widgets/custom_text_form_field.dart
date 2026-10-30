@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nexed/core/constants/app_color.dart';
+import 'package:nexed/core/utils/validators.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
     required this.controller,
@@ -12,6 +13,13 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool isPassword;
+
+  @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  bool isVisible = false;
   @override
   Widget build(BuildContext context) {
     return TextSelectionTheme(
@@ -21,9 +29,13 @@ class CustomTextFormField extends StatelessWidget {
         selectionHandleColor: AppColor.appPrimaryColor,
       ),
       child: TextFormField(
-        controller: controller,
+        validator: widget.isPassword
+            ? (value) => AppValidators.password(value)
+            : (value) => AppValidators.email(value),
+        controller: widget.controller,
+        obscureText: isVisible,
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           labelStyle: TextStyle(color: AppColor.textSecondaryColor),
           filled: true,
           fillColor: Colors.white,
@@ -39,6 +51,19 @@ class CustomTextFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: AppColor.errorColor),
           ),
+
+          suffixIcon: widget.isPassword
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isVisible = !isVisible;
+                    });
+                  },
+                  icon: Icon(
+                    isVisible ? Icons.visibility_off : Icons.visibility,
+                  ),
+                )
+              : null,
         ),
       ),
     );
