@@ -14,19 +14,22 @@ class LoginView extends StatelessWidget {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(child: Image.asset("assets/images/Logo.png")),
-              Center(
-                child: CustomText(
-                  text: "AI-Powered University Management",
-                  color: AppColor.appPrimaryColor,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Gap(50),
+                Center(child: Image.asset("assets/images/Logo.png",width: 250,)),
+                Center(
+                  child: CustomText(
+                    text: "AI-Powered University Management",
+                    color: AppColor.appPrimaryColor,
+                  ),
                 ),
-              ),
-              Gap(50),
-              CustomLoginForm(),
-            ],
+                Gap(75),
+                CustomLoginForm(),
+              ],
+            ),
           ),
         ),
       ),
