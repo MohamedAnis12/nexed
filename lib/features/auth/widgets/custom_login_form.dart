@@ -68,7 +68,6 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
             text: 'SIGN IN →',
             onTap: () {
               if (formKey.currentState!.validate()) {
-                print('Login Success');
               }
             },
           ),
