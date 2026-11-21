@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nexed/core/constants/app_color.dart';
 import 'package:nexed/features/student/widgets/custom_page_icon.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -15,7 +16,11 @@ class CustomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 80,
+      decoration: BoxDecoration(
       color: Colors.white,
+      border: BoxBorder.all(color: AppColor.borderColor)
+
+      ),
       child: Center(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,

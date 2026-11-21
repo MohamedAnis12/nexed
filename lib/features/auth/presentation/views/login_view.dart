@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:nexed/core/constants/app_color.dart';
 import 'package:nexed/features/auth/widgets/custom_login_form.dart';
-import 'package:nexed/features/student/dashboard/presentation/views/dashboard_view.dart';
 import 'package:nexed/features/student/widgets/student_bottom_navbar.dart';
 import 'package:nexed/shared/widgets/custom_text.dart';
 
